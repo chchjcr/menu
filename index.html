@@ -7,7 +7,7 @@
 <body>
 	<script>
 		async function commits() {
-			let body = await fetch('https://api.github.com/repos/chchjcr/menu/commits?page=1&per_page=5&session_id=' + Math.random().toString().slice(2, 8));
+			let body = await fetch('https://api.github.com/repos/chchjcr/menu/commits?page=1&per_page=10&session_id=' + Math.random().toString().slice(2, 8));
 			let json = await body.json();
 			return json.map(c => c.url)
 		}
@@ -15,7 +15,11 @@
 		async function getFile(url) {
 			let body = await fetch(url);
 			let json = await body.json();
-			let latest = json.files.find(f => f.filename.endsWith('.pdf'));
+			let latest = json.files.find(f => {
+				if (f.status === 'removed') return false;
+				if (f.filename.endsWith('.pdf')) return true;
+				return false;
+			});
 			if (!latest) return '';
 			return 'https://beta.chchjcr.co.uk/menu/' + latest.filename;
 		}
@@ -32,18 +36,20 @@
 			if (!file) document.write('No menus found.');
 		});
 	</script>
-<script defer>
-	function hideAd() {
-		let ad = document.getElementById('WIX_ADS');
-		console.log(ad);
-		if (!ad) return;
-		ad.style.display = 'none';
-	}
-	window.hideAd = hideAd;
-	hideAd();
-	window.setTimeout(hideAd, 1000);
-	window.addEventListener('load', hideAd);
-	window.addEventListener('scroll', hideAd);
-</script>
+	<script defer>
+		/*
+		function hideAd() {
+			let ad = document.getElementById('WIX_ADS');
+			console.log(ad);
+			if (!ad) return;
+			ad.style.display = 'none';
+		}
+		window.hideAd = hideAd;
+		hideAd();
+		window.setTimeout(hideAd, 1000);
+		window.addEventListener('load', hideAd);
+		window.addEventListener('scroll', hideAd);
+		*/
+	</script>
 </body>
 </html>

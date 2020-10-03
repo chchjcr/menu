@@ -9,7 +9,7 @@ async function getFile(url) {
 	let json = await body.json();
 	let latest = json.files.find(f => f.filename.endsWith('.pdf'));
 	if (!latest) return '';
-	return 'https://beta.chchjcr.co.uk/menu/' + latest.filename;
+	return 'https://beta.chchjcr.co.uk/menu' + latest.filename;
 }
 
 commits().then(async (urls) => {

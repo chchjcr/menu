@@ -1,0 +1,21 @@
+{
+  "name": "chchjcr-menu",
+  "version": "1.0.0",
+  "description": "Redirects to the latest file in the repo, providing it is a pdf",
+  "main": "index.js",
+  "scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1",
+	"start": "serve -s ./",
+	"deploy": "git push -u origin master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chchjcr/menu.git"
+  },
+  "author": "Aloysius Lip",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chchjcr/menu/issues"
+  },
+  "homepage": "https://github.com/chchjcr/menu#readme"
+}

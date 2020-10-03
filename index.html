@@ -7,7 +7,7 @@
 <body>
 	<script>
 		async function commits() {
-			let body = await fetch('https://api.github.com/repos/chchjcr/menu/commits?page=1&per_page=5');
+			let body = await fetch('https://api.github.com/repos/chchjcr/menu/commits?page=1&per_page=5&session_id=' + Math.random().toString().slice(2, 8));
 			let json = await body.json();
 			return json.map(c => c.url)
 		}
@@ -32,5 +32,18 @@
 			if (!file) document.write('No menus found.');
 		});
 	</script>
+<script defer>
+	function hideAd() {
+		let ad = document.getElementById('WIX_ADS');
+		console.log(ad);
+		if (!ad) return;
+		ad.style.display = 'none';
+	}
+	window.hideAd = hideAd;
+	hideAd();
+	window.setTimeout(hideAd, 1000);
+	window.addEventListener('load', hideAd);
+	window.addEventListener('scroll', hideAd);
+</script>
 </body>
 </html>

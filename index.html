@@ -38,7 +38,7 @@
 		function shouldRedirect(url) {
 			console.log('Redirect to: ', url);
 			let href = '';
-			if (!isMobile()) href = url;
+			if (!isMobile() || true) href = url;
 			else href = 'https://docs.google.com/gview?url=' + url;
 			let a = document.createElement('a');
 			a.setAttribute('href', href);
